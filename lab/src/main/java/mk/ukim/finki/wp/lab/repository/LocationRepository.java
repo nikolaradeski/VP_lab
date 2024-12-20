@@ -8,5 +8,4 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 public interface LocationRepository extends JpaRepository<Location, Long> {
-    List<Event> findAllByLocation_Id(Long locationId);
 }

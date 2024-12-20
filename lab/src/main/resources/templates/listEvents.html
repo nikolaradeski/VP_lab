@@ -41,10 +41,10 @@
         <div th:each="event : ${events}">
             <input type="radio" th:value="${event.name}" th:name="selectedEventName" />
             <label th:text="${event.getName()} + ' - ' + ${event.getDescription()} + ' (Rating: ' + ${event.getPopularityScore()} + ') - ' + ${event.getLocation()}"></label>
-
-            <button type="button" th:onclick="'window.location.href=\'/events/getEditForm/' + ${event.id} + '\' '">Edit</button>
-            <button type="button" th:onclick="'window.location.href=\'/events/delete/' + ${event.id} + '\' '">Delete</button>
-
+            <th:block sec:authorize="hasRole('ROLE_ADMIN')">
+                <button type="button" th:onclick="'window.location.href=\'/events/getEditForm/' + ${event.id} + '\' '">Edit</button>
+                <button type="button" th:onclick="'window.location.href=\'/events/delete/' + ${event.id} + '\' '">Delete</button>
+            </th:block>
         </div>
 
 
@@ -60,9 +60,11 @@
         <input type="submit" value="Submit">
     </form>
     <br/>
-    <a href="/events/add-form">
-        <button type="button">Add New Event</button>
-    </a>
+    <th:block sec:authorize="hasRole('ROLE_ADMIN')">
+        <a href="/events/add-form">
+            <button type="button">Add New Event</button>
+        </a>
+    </th:block>
 </main>
 </body>
 </html>

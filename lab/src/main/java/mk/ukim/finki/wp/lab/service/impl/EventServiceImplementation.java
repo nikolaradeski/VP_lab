@@ -48,7 +48,7 @@ public class EventServiceImplementation implements EventService {
     }
 
     @Override
-    public List<Event> searchByRating(double searchRating, List<Event> events) {
+    public List<Event> searchByRating(Integer searchRating, List<Event> events) {
         return events.stream().filter(event -> event.getPopularityScore() >= searchRating).toList();
     }
 
@@ -58,12 +58,12 @@ public class EventServiceImplementation implements EventService {
     }
 
     @Override
-    public void saveEvent(String name, String description, Double popularityScore, Long locationId) {
+    public void saveEvent(String name, String description, Integer popularityScore, Long locationId) {
         eventRepository.save(new Event(name,description,popularityScore,locationRepository.findById(locationId).get()));
     }
 
     @Override
-    public Event updateEvent(Long eventId, String name, String description, Double popularityScore, Long locationId) {
+    public Event updateEvent(Long eventId, String name, String description, Integer popularityScore, Long locationId) {
         Event event = eventRepository.findById(eventId)
                 .orElseThrow(() -> new RuntimeException("Event not found!"));
         event.setName(name);

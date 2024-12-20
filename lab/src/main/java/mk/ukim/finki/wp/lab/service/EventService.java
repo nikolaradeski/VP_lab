@@ -15,13 +15,13 @@ public interface EventService {
 
     List<Event> searchByName(String searchName, List<Event> events);
 
-    List<Event> searchByRating(double searchRating, List<Event> events);
+    List<Event> searchByRating(Integer searchRating, List<Event> events);
 
     List<Event> searchByLocation(String locationName, List<Event> events);
 
-    void saveEvent(String name, String description, Double popularityScore, Long locationId);
+    void saveEvent(String name, String description, Integer popularityScore, Long locationId);
 
-    Event updateEvent(Long eventId, String name, String description, Double popularityScore, Long locationId);
+    Event updateEvent(Long eventId, String name, String description, Integer popularityScore, Long locationId);
 
     void deleteEvent(Long eventId);
 }

@@ -45,7 +45,7 @@ public class EventListServlet extends HttpServlet {
 
         if (searchRatingStr != null && !searchRatingStr.isEmpty()) {
             try {
-                double searchRating = Double.parseDouble(searchRatingStr);
+                Integer searchRating = Integer.parseInt(searchRatingStr);
                 events = eventService.searchByRating(searchRating, events);
             } catch (NumberFormatException e) {
                 // Handle invalid input for rating if necessary
